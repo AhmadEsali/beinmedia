@@ -1,8 +1,20 @@
+import { useState } from 'react';
+import WaitingListContext from 'contexts/WaitingListContext';
+import Routes from 'routes';
+import { GlobalStyles } from 'styles/GlobalStyles';
 function App() {
+  const [showList, setShowList] = useState(false);
+
+  const toggleWaitingList = () => {
+    setShowList(!showList);
+  };
   return (
-    <div className='App'>
-      <header className='App-header'></header>
-    </div>
+    <>
+      <GlobalStyles />
+      <WaitingListContext.Provider value={{ showList, toggleWaitingList }}>
+        <Routes />
+      </WaitingListContext.Provider>
+    </>
   );
 }
 
